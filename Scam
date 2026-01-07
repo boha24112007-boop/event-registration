@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event Registration Page</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    width: 330px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 7px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #2c5364;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0f2027;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.result {
+    margin-top: 15px;
+    background: #eef3f7;
+    padding: 10px;
+    border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Event Registration</h2>
+
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="password" id="password" placeholder="Password">
+
+    <div class="error" id="error"></div>
+
+    <button onclick="register()">Register</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function register() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    let error = document.getElementById("error");
+    let result = document.getElementById("result");
+
+    error.innerText = "";
+    result.innerHTML = "";
+
+    if (name === "" || email === "" || password === "") {
+        error.innerText = "All fields are required!";
+        return;
+    }
+
+    result.innerHTML = `
+        <strong>Registration Data:</strong><br><br>
+        Full Name: ${name}<br>
+        Email: ${email}<br>
+        Password: ${password}
+    `;
+}
+</script>
+
+</body>
+</html>
